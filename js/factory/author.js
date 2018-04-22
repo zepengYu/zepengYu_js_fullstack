@@ -18,7 +18,7 @@ this.languages = languages
 Coder.prototype = new Person()
 Coder.prototype.construtor = Coder
 Coder.prototype.getLanguages = function(){
-    console.log(this.languages)
+   return this.languages
 }
 
 var Wxf = new Person('汪西发');
