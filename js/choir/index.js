@@ -6,8 +6,6 @@ var choir = [];
 // JSON Object
 // 只要两脚站立会嘎嘎嘎叫的都是鸭子
 var duck = {
-  // name: '鸭王',  
-  // actor: '任达华',
   duckSinging: function() {
     console.log('嘎嘎嘎');
   }
