@@ -1,0 +1,26 @@
+bg_color = #12ef56   //stylus可以定义变量
+box_size = 100px
+
+// 能不能只写标准属性，生成前缀？ mixin 混合
+// border-radius 这些兼容都得写
+
+vender(prop, args)
+    -webkit-{prop} args 
+    -moz-{prop} args 
+    -ms-{prop} args 
+    {prop} args
+
+border-radius(n)
+    vender('border-radius',arguments)
+
+box-shadow(n)
+    vehder('box-shadow',arguments) 
+    
+
+.box
+    background-color: bg_color
+    width: box_size
+    height box_size
+    border-radius(5px)
+    box-shadow(1px 1px 10px rgba(0,0,0,.5))
+    
