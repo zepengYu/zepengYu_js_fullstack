@@ -7,8 +7,7 @@
            data 是活的 setdata 
            只要状态一变，界面立即改变
       -->
-      <text class="{{status=='1'?'active':''}}" data-status="1" bindtap="showStatus">全部</text>
-      <!-- data 数据属性 -->
+      <text class="{{status=='1'?'active':''}}" data-status="1" bindtap="showStatus">全部</text>    <!-- data 数据属性 -->
       <text class="{{status=='2'?'active':''}}" data-status="2" bindtap="showStatus">未完成</text>
       <text class="{{status=='3'?'active':''}}" data-status="3" bindtap="showStatus">已完成</text>
     </div>

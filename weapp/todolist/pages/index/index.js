@@ -59,8 +59,6 @@ Page({
     })
     // 看到界面，我们就知道要的数据
     // 看到交互，对数据操作
-
-    
   },
   addTodoHide:function(e){
     this.setData({

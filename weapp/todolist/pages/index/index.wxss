@@ -93,7 +93,7 @@
 }
 
 .lists .item icon{
-    padding: 15rpx 0 10rpx;
+    padding: 15rpx 0 10rpx 20rpx;
 }
 
 icon{
