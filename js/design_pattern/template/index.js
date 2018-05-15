@@ -10,6 +10,7 @@
 // // brewCoffeeGriends()
 // // pourInCup()
 // // addSuguarAndMilk()
+
 // var Coffee = function() {
 // }
 // Coffee.prototype.boilWater = function() {
@@ -30,6 +31,8 @@
 //   this.pourInCup();
 //   this.addSugarAndMilk();
 // }
+
+
 // // 泡杯茶
 // // 把水烧开
 // // 用沸水浸泡茶叶
