@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./font/iconfont.css">
+    <style>
+    * {
+    margin: 0;
+    padding: 0;
+}
+div {
+    display: block;
+}
+body {
+    -webkit-font-smoothing: antialiased;
+    background-color: #fff;
+    font: 12px/1.5 Microsoft YaHei,tahoma,arial,Hiragino Sans GB,\\5b8b\4f53,sans-serif;
+    color: #666;
+}
+.w {
+    position: relative;
+    z-index: 11;
+    height: 140px;
+    margin: auto;
+    width: 1190px;
+    background: #f0f3ef;
+}
+.search-m {
+    position: relative;
+    z-index: 1;
+    height: 60px;
+}
+.search-m .form {
+    position: absolute;
+    left: 320px;
+    top: 25px;
+    width: 550px;
+    height: 35px;
+}
+.search-m .text {
+    left: 0;
+    padding: 4px 44px 4px 4px;
+    width: 450px;
+    height: 25px;
+    border: 1px solid transparent;
+    line-height: 25px;
+    font-size: 14px;
+    color: #989898;
+}
+button, input {
+    font-family: Microsoft YaHei,tahoma,arial,Hiragino Sans GB,\\5b8b\4f53,sans-serif;
+}
+button, input {
+    font-family: Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,\\5B8B\4F53,sans-serif;
+}
+.photo-search-btn {
+    position: absolute;
+    right: 60px;
+    top: 4px;
+    width: 19px;
+    height: 25px;
+    overflow: hidden;
+}
+.photo-search-btn:hover{
+    color: red;
+}
+form {
+    display: block;
+    margin-top: 0em;
+}
+.photo-search-btn .iconfont  {
+    display: block;
+    width: 19px;
+    height: 15px;
+    cursor: pointer;
+    
+}
+.photo-search-btn .upload-trigger {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 3;
+    width: 500px;
+    height: 500px;
+    cursor: pointer;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    opacity: 0;
+}
+.search-m .button {
+    -moz-border-radius: 0;
+    border-radius: 0;
+    right: 0;
+    width: 50px;
+    height: 35px;
+    line-height: 35px;
+    border: none;
+    background-color: #f10215;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+}
+.search-m .button, .search-m .text {
+    position: absolute;
+    top: 0;
+    outline: none;
+}
+button {
+    cursor: pointer;
+}
+.lg{
+    font-size: 20px;
+}
+</style>
+</head>
+<body>
+    <div class="w">
+        <div id="search" class="">
+            <div class="search-m"> 
+                <div class="form">
+                    <input clstag="h|keycount|head|search_a" type="text" autocomplete="off" id="key" accesskey="s" class="text">
+                    <span class="photo-search-btn">
+                        <form id="search-img-upload" clstag="h|keycount|2016|03d" method="post"     action="//search.jd.com/image?op=upload"
+                            enctype="multipart/form-data" target="search_upload">
+                            <i class="iconfont icon-icon-- lg"></i>
+                            <input type="file" name="file" class="upload-trigger" accept="image/png,image/jpeg,image/jpg">
+                        </form>
+                    </span>
+                    <button clstag="h|keycount|head|search_c" class="button">
+                        <i class="iconfont icon-search lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
