@@ -1,0 +1,21 @@
+<!-- 有的组件在多个页面会共享，封装 template -->
+<!-- <import src="/templates/spinner.wxml"/> -->
+<!-- navigator = i标签 -->
+<navigator class="media-box media-box_appmsg" 
+           url="/pages/posts/show?id={{item.id}}" 
+           wx:for="{{entities}}" wx:key="{{item.id}}" >
+    <!-- 媒体资源展示media-box -->
+    <view class="media-box__hd media-box__hd_in-appmsg">
+        <image class="media-box__thumb" src="/assets/images/a.png"></image>
+    </view>
+    <view class="media-box__bd media-box__bd_in-appmsg">
+        <view class="media-box__title">
+            {{item.title.rendered}}-{{index}}
+        </view>
+        <view class="media-box__desc">
+            {{item.excerpt.plaintext}}
+        </view>
+    </view>
+</navigator>
+<!-- <template is="spinner" data="{{isLoading}}"/> -->
+

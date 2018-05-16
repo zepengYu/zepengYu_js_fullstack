@@ -1,0 +1,41 @@
+@import 'styles/weui.wxss';
+page{
+    background: #f8f8f8;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+.spinner{
+    margin: 32px auto;
+    width: 70px;
+    text-align: center;
+}
+
+.spinner view{
+    width: 18px;
+    height: 18px;
+    background-color: #333;
+    border-radius: 50%;
+    display: inline-block;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+.spinner .bounce1{
+    animation-delay: -0.32s;
+    -webkit-animation-delay: -0.32s;
+}
+
+.spinner .bounce2{
+    animation-delay: -0.16s;
+    -webkit-animation-delay: -0.16s;
+}
+
+@keyframes sk-bouncedelay{
+    0%, 80%, 100%{
+        transform: scale(0);
+        -webkit-transform: scale(0);
+    }
+    40%{
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+}
