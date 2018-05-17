@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/demo/demo"
+    "pages/demo/demo",
+    "pages/posts/show"
   ],
   "window": {
     "navigationBarTitleText": "ninghao.net",
