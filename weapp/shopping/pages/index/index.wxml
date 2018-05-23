@@ -1,0 +1,49 @@
+<!-- <view class="container">
+    <view class="page-header">
+        <image ></image>
+        <div class="page-header_c">
+
+        </div>
+        <div class="page-header_m"></div>
+    </view>
+    <view class="page-bottom">
+        <div class="title">
+            <text>商品详情</text>
+            <text>产品参数</text>
+            <text>售后保障</text>
+        </div>
+    </view>
+</view> -->
+
+
+<view class="main">
+    <view class="goods-box">
+        <image class="goods-themb" src="{{goods.image}}"></image>
+        <view class="goods-operation">
+            <text class="goods-operation-num">数量{{num}}</text>
+            <text class="goods-operation-add" bindtap="addCount">+</text>
+            <text class="goods-to-cart" bindtap="addToCart">加入购物车</text>
+            <image class="goods-cart-img" src="/image/cart1.png" />
+        </view>
+        <image class="to-carts-icon" wx:if="{{show}}" src="/image/cart1.png" />
+        <view class="goods-stock">{{goods.stock}}</view>
+        <view class="goods-title">{{goods.title}}</view>
+        <view class="goods-price">￥{{goods.price}}</view>
+        <navigator url="../cart/cart" open-type="switchTab">
+            <view class="carts-icon {{scaleCart?'on':''}}">
+                <!-- 数量？ -->
+                <!-- wx:if -->
+                <image src="/image/cart2.png" />
+                <text class="carts-icon-num" wx:if="{{hasCarts}}">{{totalNum}}</text>
+            </view>
+        </navigator>
+    </view>
+    <view class="goods-tab-box">
+        <view class="goods-tab-nav on" data-index="0">商品详情</view>
+        <view class="goods-tab-nav" data-index="1">产品参数</view>
+        <view class="goods-tab-nav" data-index="2">售后保障</view>
+        <view class="goods-content">
+            <view>{{goods.service}}</view>
+        </view>
+    </view>
+</view>
