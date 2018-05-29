@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>卖手机哦</title>
+</head>
+<body>
+  <!-- 门店 品牌 内存 颜色 数量.... =》 有货 -->
+  选择品牌 <select id="brandSelect">
+    <option value="">请选择</option>
+    <option value="iphone">iPhone</option>
+    <option value="vivo">Vivo</option>
+  </select>
+<br/>
+  选择颜色 <select id="colorSelect">
+            <option value="">请选择</option>
+            <option value="red">红色</option>
+            <option value="blue">蓝色</option>
+          </select>
+  <br/>
+  选择内存 <select id="memorySelect">
+      <option value="">请选择</option>
+      <option value="16G">16G</option>
+      <option value="32G">32G</option>
+    </select>
+  <br>
+  输入购买数量 <input id="numberInput" type="text"/>
+  <br/>
+  您选择的品牌: <div id="brandInfo"></div>
+  您选择了颜色: <div id="colorInfo"></div> 
+  您选择的内存: <div id="memoryInfo"></div> 
+  您选择了数量: <div id="numberInfo"></div>
+  <button id="nextBtn" disabled="true">请选择手机颜色和购买数量</button>
+  <script>
+//   颜色 内存 品牌 一次一次去做check
+//   一个
+// 多一个条件 得改所有和结果有关的地方
+// 事请太多，搞不定，交给别人搞 中介者模式
+const goods = {
+    "iphone|red|32G": 3,
+    "iphone|red|16G": 0,
+    "iphone|blue|32G": 4,
+    "iphone|blue|16G": 6,
+    "vivo|red|32G": 2,
+    "vivo|red|16G": 1,
+    "vivo|blue|32G": 3,
+    "vivo|blue|16G": 4
+  };
+  
+
+const mediator = (function(){
+    // 闭包 
+const brandSelect = document.querySelector('#brandSelect'),
+      colorSelect = document.querySelector('#colorSelect'),
+      memorySelect = document.querySelector('#memorySelect'),
+      numInput = document.querySelector('#numberInput'),
+      brandInfo = document.querySelector('#brandInfo'),
+      colorInfo = document.querySelector('#colorInfo'),
+      memoryInfo = document.querySelector('#memoryInfo'),
+      numInfo = document.querySelector('#numberInfo'),
+      nextBtn = document.querySelector('#nextBtn');
+
+// 所有的值
+// 所有的check
+// 通过
+// 差异性 相应的info 值为value
+
+brandSelect.onchange = function(){
+    mediator.changed(this)
+}
+colorSelect.onchange = function(){
+    mediator.changed(this)
+}
+memorySelect.onchange = function(){
+    mediator.changed(this)
+}
+numInput.oninput = function(){
+    mediator.changed(this)
+}
+
+
+    return{
+        changed:function(obj){
+            //中介者模式，让我们将复杂的情况收纳至一个中介者对象，之后，新的情况，新的处理，都将集中在changed一处
+            // console.log(obj.value);
+        var brand = brandSelect.value,
+            color =  colorSelect.value,
+            memory = memorySelect.value,
+            number = numInput.value;
+
+            //再多情况，改一个地方
+            if (obj === brandSelect) {
+                brandInfo.innerHTML = brand;
+            } else if (obj === colorSelect) {
+                colorInfo.innerHTML = color;
+            } else if (obj === memorySelect) {
+                memoryInfo.innerHTML = memory;
+            } else if (obj === numInput) {
+                numInfo.innerHTML = number;
+            }
+            if(!brand){
+                nextBtn.disabled = true;
+                nextBtn.innerHTML = '请选择手机品牌';
+                return;
+            }
+            if(!color){
+                nextBtn.disabled = true;
+                nextBtn.innerHTML = '请选择手机颜色';
+                return;
+            }
+            if(!memory){
+                nextBtn.disabled = true;
+                nextBtn.innerHTML = '请选择内存';
+                return;
+            }
+            if(!Number.isInteger(parseInt(number))|| parseInt(number)<= 0){
+                nextBtn.disabled = true;
+                nextBtn.innerHTML = '请输入正确的数量';
+                return;
+            }
+            let stock = goods[`${brand}|${color}|${memory}`];
+            if(number > stock){
+                nextBtn.disabled = true;
+                nextBtn.innerHTML = '库存不足';
+                return;
+            }
+            nextBtn.disabled = false;
+            nextBtn.innerHTML = '放入购物车';
+        }
+    }
+})();
+  </script>
+  </body>
+</html>
