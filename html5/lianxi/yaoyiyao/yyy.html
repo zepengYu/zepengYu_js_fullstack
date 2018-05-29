@@ -1,0 +1,107 @@
+<!-- 1 页面要出来
+rem script  适配所有设备。
+3个 手机图片 + animation
+loading none, block  定位
+摇出来的人， dom 
+结构+ 样式写在开始的地方 
+写完了之后， 隐藏
+
+2 js
+摇一摇api 
+loading 出来， 
+setTimeout  
+动态的 位置translateY
+
+3 操作好声音  -->
+
+http://192.168.31.99:54897
+
+if(window.DeviceMotionEvent){
+    window.addEventListener('devicemotion', shake, false);
+}else{
+    alert('本设备不支持摇一摇功能');
+}
+function shake(eventDate){
+    //获取设备加速度信息 
+    var acceleration = eventDate.accelerationIncludingGravity;
+    var nowTime = new Date().getTime();
+    //如果这次摇的时间距离上次摇的时间有一定间隔 才执行
+    if(nowTime - lastTime > 100){
+        var diffTime = nowTime - lastTime;
+        lastTime = nowTime;
+        x = acceleration.x;
+        y = acceleration.y;
+        z = acceleration.z;
+        var speed = Math.abs(x + y + z - lastX - lastY - lastZ) / diffTime * 10000;
+        if(speed > shakeSpeed){
+            soundMale.play();
+            showResult();
+        }
+        lastX = x;
+        lastY = y;
+        lastZ = z;
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en" style="font-size:37.5px;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html, body {
+    height: 100%;
+    overflow: hidden;
+  }
+  .page {
+    height: 100%;
+    background: #333;
+    overflow: hidden;
+  }
+  .result_cell {
+    margin-top: 10rem;
+    width: 7.58rem;
+    margin-left: auto;
+    margin-right: auto;
+    height: 1.8rem;
+    background: #DDD;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 0.2rem;
+  }
+  .hd {
+    width: 1.33333rem;
+    height: 1.3333rem;
+    margin-right: 0.5rem;
+    border: 1px solid yellow ;
+  }
+  .hd img {
+    width: 100%;
+    height: auto;
+  }
+
+  </style>
+</head>
+<body>
+  <div class="page">
+      <div class="result_cell">
+          <div class="hd">
+            <img src="./bg.jpg" alt="">
+          </div>
+          <div class="bd">
+            <p>摇晃结果</p>
+            <p>龚喜你摇到本大帅哥。</p>
+          </div>
+        </div>
+  </div>
+  
+</body>
+</html>
