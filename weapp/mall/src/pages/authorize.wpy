@@ -11,11 +11,11 @@
     </view>
   </view>
 </template>
-
 <script>
 import wepy from 'wepy';
 import api from '@/api/api';
-import{
+console.log(api)
+import {
   USER_INFO,
   USER_SPECIAL_INFO,
   SYSTEM_INFO
@@ -25,59 +25,63 @@ export default class Authroize extends wepy.page {
     navigationBarTitleText: '授权登录'
   }
 
-async onLoad(){
-  let res = await wepy.getSetting()
-  if((res.authSetting)['scope.userInfo']){
-    wepy.switchTab({
-      url:'/pages/home'
-    })
+  async onLoad () {
+    let res = await wepy.getSetting()
+    console.log(res);
+    if ((res.authSetting)['scope.userInfo']) {
+      wepy.switchTab({
+        url: '/pages/home'
+      })
+    }
   }
-}
 
-//async 先声明 对函数内部有异步操作变同步的声明
+  // async 对函数内部有异步操作变同步的声明 
   async onGotUserInfo (e) {
     console.log(e);
     if (e.detail.errMsg == 'getUserInfo:ok') {
-      //wepy.login api 异步
-      //await 等一下 异步变同步
-      //通过用户的头像，nickname 拿到用户的code
+      // wepy.login api 异步的， ·
+      // await 等一下 异步变同步 
+      // 通过用户的头像，nickname 拿到用户code
       let res = await wepy.login();
       console.log(res);
-      if(res.code){
-        //await 一下 多的sync 自带同步
-        //保存storage 不用在授权 快一点存好
+      if (res.code) {
+        // await 一下 多Sync 自带同步 
+        // 保存storage 不用再用户授权， 快一点存好
         wepy.setStorageSync(USER_INFO, e.detail.userInfo);
-        // 大型项目中，将所有的请求，交给api模块，
-        // 必须做， api 文件模块，负责所有的数据请求
+        // city, coco 直接定位分店为南昌的，
+        // 大型项目中， 将所有的请求， 交给api模块，
+        // 必须做， api 文件模块， 负责所有的数据请求
         // wx.request
-        //授权 -> login(code) -> 登录（后端session）
-        //获取 等一下 注册后的数据
+        // 授权-> login(code) -> 登录(后端session)
         let rlt = await api.wxJsCode2Session({
-          query:{
-            jsCode:res.code,
-            nickName:e.detail.userInfo.nickName
+          query: {
+            jsCode: res.code,
+            nickName: e.detail.userInfo.nickName
           }
         });
-        if(rlt.result){
+        console.log(rlt);
+        if (rlt.result) {
           let data = rlt.data;
-          if(data.openid){
+          if (data.openid) {
             wepy.setStorageSync(USER_SPECIAL_INFO, data.openid);
           }
           wepy.switchTab({
-              url:'/pages/home'
-            })
-        }  else {
+            url: '/pages/home'
+          })
+        } else {
           let res = await wepy.showModal({
-            title:'appid有误',
-            content:'授权失败'
+            title: 'appid有误',
+            content: '授权失败'
           });
-          if(res.confim){
+          if (res.confirm) {
             wepy.switchTab({
-              url:'/pages/home'
+              url: '/pages/home'
             })
           }
         }
+
       }
+
     }
   }
 

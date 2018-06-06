@@ -61,7 +61,7 @@ export default class extends wepy.app {
   constructor () {
     super()
     this.use('requestfix')
-    //启动 promisify 让小程序支持promise
+    //启用 promisify  让小程序支持promise 
     this.use('promisify')
   }
 
