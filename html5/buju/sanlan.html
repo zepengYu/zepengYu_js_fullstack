@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .container{
+        height: 400px;
+    }
+    .left{
+        float: left;
+        height: 400px;
+        width: 240px;
+        background-color: red;
+        border: 1px solid red;
+    }
+    .right{
+        float: right;
+        height: 400px;
+        width: 240px;
+        background-color: blue;
+        border: 1px solid red;
+    }
+    .center{
+        overflow: hidden;
+        height: 400px;
+    }
+    .minbox{
+        width: 25%;
+        height: 200px;
+        background-color: yellow;
+        float: left;
+        border: 1px solid red;
+    }
+    .minbox:nth-child(2n){
+        background-color:pink;
+    }
+    .maxbox{
+        background-color: pink;
+        width: 75%;
+        height: 200px;
+        float: left;
+        border: 1px solid red;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="left">
+
+        </div>
+        <div class="right">
+
+        </div>
+        <div class="center">
+            <div class="minbox"></div>
+            <div class="minbox"></div>
+            <div class="minbox"></div>
+            <div class="minbox"></div>
+            <div class="minbox"></div>
+            <div class="maxbox"></div>
+        </div>
+    </div>
+</body>
+</html>
