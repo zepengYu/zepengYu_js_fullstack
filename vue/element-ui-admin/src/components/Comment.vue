@@ -44,7 +44,9 @@ export default {
             
         },
         turnPage(curr){
-
+            console.log(curr);
+            this.currentPage = curr;
+            this.list = this.totalData.slice(this.pagesize*(curr-1),this.pagesize*curr)
         }
     }
 }

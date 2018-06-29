@@ -3,7 +3,7 @@
         <label for="">用户名:</label>
         <input type="text" class="user" placeholder="请输入用户名" ref="username">
         <label for="">评论:</label>
-        <textarea class="textarea" placeholder="请输入评论内容" ref="content" @keyup.enter="addComment"></textarea>
+        <textarea class="textarea" placeholder="请输入评论内容" ref="content" @keyup.enter.native="submit"></textarea>
         <button type="button" @click="doComment">提交</button>
     </form>
 </template>
