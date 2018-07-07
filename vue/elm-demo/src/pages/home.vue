@@ -1,6 +1,6 @@
 <template>
     <div>
-        <head-top signin-up="home">
+        <head-top signinUP="home">
             <span slot="logo" class="head_logo">ele.me</span>
         </head-top>
         <nav class="city_nav">
@@ -35,19 +35,24 @@ export default {
         headTop
     },
     // 生命周期 城市？不准确，又耗时的api 阻塞组件渲染
-    mounted() {
-        cityGuess()
-        .then(res => res.json())
-        .then(data => {
-            this.guessCityId = data.id
-            this.guessCity = data.name
-        })
-        hotcity()
-        .then(res => res.json())
-        .then(data => {
-            this.hotcity = data
-        })
+    async mounted() {
+        const cityData = await cityGuess()
+        this.guessCityId = cityData.id
+        this.guessCity =  cityData.name
+        // cityGuess()
+        // .then(res => res.json())
+        // .then(data => {
+        //     this.guessCityId = data.id
+        //     this.guessCity = data.name
+        // })
+        this.hotcity = await hotcity()
+        // hotcity()
+        // .then(res => res.json())
+        // .then(data => {
+        //     this.hotcity = data
+        // })
     },
+
 }
 </script>
 <style lang="stylus">
