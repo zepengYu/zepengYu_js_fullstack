@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
 import TimeEntries from '@/components/TimeEntries'
-import LogTime from '@/components/LogTime'
+import LogTime from '@/components/LogTime.vue'
 import NotFound from '@/components/404'
 
 Vue.use(Router)
