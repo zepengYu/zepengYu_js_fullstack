@@ -6,7 +6,7 @@ import './scroll.styl';
 
 class Scroll extends React.Component {
   componentDidUpdate () {
-    // 组件更新后/
+    // 组件更新后
     if (this.bScroll && this.props.refresh === true) {
       this.bScroll.refresh();
     }

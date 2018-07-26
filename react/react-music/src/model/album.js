@@ -9,6 +9,7 @@ export class Album {
     }
 }
 
+// 组装数据接口
 export function createAlbumByList(data) {
     return new Album(
         data.album_id,
