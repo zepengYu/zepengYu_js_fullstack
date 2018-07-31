@@ -21,7 +21,22 @@
             params = params || {}
             params.data = params.data || {}
             var json = params.jsonp? jsonp(params) : json(params)
-            function jsonp(params) {}
+            function jsonp(params) {
+                // script 动态构建
+                var callbackName = params.jsonp
+                var head = document.getElementsByTagName('head')[0]
+                params.data['jsonpcallback'] = callbackName
+                var data = formatParams(params.data)
+                var script = document.createElement('script')
+                head.appendChild(script)
+                //新建一个全局的变量
+                window[callbackName] = function(json){
+                    head.removeChild(script)
+                    window[callbackName] = null
+                    params.success && params.success(json)
+                }
+                script.src = params.url + '?' + data
+            }
             function json(params) {
                 params.type = (params.type || 'GET').toUpperCase()
                 params.data = formatParams(params.data)
@@ -75,12 +90,20 @@
             error: (err) => {console.log(err)}
         })
     </script>
-    <script>
+    <!-- <script>
         function callback(data) {
             console.log(data);
         }
     </script>
-    <script src="http://localhost:3000/api?jsonpcallback=callback"></script>
-    
+    <script src="http://localhost:3000/api?jsonpcallback=callback"></script> -->
+    <script>
+        ajax({
+            jsonp: 'jsoncallback',
+            url: 'http://localhost:3000/api',
+            success: function(data) {
+                console.log(data);
+            }
+        })
+    </script>
 </body>
 </html>
