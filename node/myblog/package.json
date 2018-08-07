@@ -1,0 +1,16 @@
+{
+  "name": "myblog",
+  "version": "1.0.0",
+  "description": "koa express\r node server frame\r koa egg async awite 异步\r express 早一点",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.3"
+  }
+}
