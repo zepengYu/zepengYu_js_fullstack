@@ -15,6 +15,7 @@ function query (sql, values) {
             if (err) {
                 reject(err)
             } else {
+                console.log(sql)
                 connection.query(sql, values, (err, rows) => {
                     if (err) {
                         reject(err)
@@ -69,12 +70,22 @@ createTable(users)
 createTable(posts)
 createTable(comment)
 
-exports.findDateByName = (name) => {
+exports.findDataByName = (name) => {
     let _sql = `select * from users where name="${name}";`
     return query(_sql)
 }
 
 exports.insertData = (value) => {
     let _sql = "insert into users set name=?,pass=?,avatar=?,moment=?;"
+    return query(_sql, value)
+}
+
+exports.findUserData = (name) => {
+    let _sql = `select * from users where name="${name}";`
+    return query(_sql)
+}
+
+exports.insertPost = (value) => {
+    let _sql = `insert into posts set name=?,title=?,content=?,md=?,uid=?,moment=?,avatar=?;`
     return query(_sql, value)
 }
